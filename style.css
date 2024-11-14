@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#gameArea {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-image: url('https://i.postimg.cc/xjwLYDK3/images-1.jpg');  /* Background image */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    border: 2px solid #444;
+    transition: background-color 0.5s ease;
+}
+
+#player {
+    position: absolute;
+    width: 30px; /* Width of the player (blue block) */
+    height: 30px; /* Height of the player (blue block) */
+    background-color: #00f;  /* Blue block */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.1s ease;
+}
+
+.obstacle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('https://i.postimg.cc/4dmFwVfX/images-3.jpg');  /* New obstacle image */
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    border-radius: 5px;  /* Optional: rounds the corners */
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+}
+
+#gameOverMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #fff;
+    display: none;  /* Hidden by default */
+}
+
+#restartBtn {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    display: none;
+    cursor: pointer;
+}
+
+#restartBtn:hover {
+    background-color: #777;
+}
+
+#controls {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+#controls button {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    color: white;
+    background-color: #555;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+/* Left button styles with rotated arrow image */
+#controls button:nth-child(1) {
+    background-image: url('https://i.postimg.cc/FFMvwsJ9/Arrow-icon-svg.png');  /* Arrow image */
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #555;  /* Button background color */
+    transform: scaleX(-1);  /* Flip horizontally */
+    animation: moveLeftAnimation 1s infinite alternate ease-in-out;
+}
+
+/* Right button styles with custom arrow image */
+#controls button:nth-child(2) {
+    background-image: url('https://i.postimg.cc/FFMvwsJ9/Arrow-icon-svg.png');  /* Arrow image */
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #555;  /* Button background color */
+    animation: moveRightAnimation 1s infinite alternate ease-in-out;
+}
+
+#controls button:hover {
+    background-color: #777;
+    transform: translateY(-5px);  /* Move the button up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);  /* Increase shadow on hover */
+}
+
+#controls button:active {
+    transform: translateY(2px);  /* Move the button down when clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);  /* Decrease shadow when clicked */
+}
+
+/* Left button animation */
+@keyframes moveLeftAnimation {
+    0% {
+        transform: scaleX(-1) translateY(0); /* Flip horizontally */
+    }
+    100% {
+        transform: scaleX(-1) translateY(-5px); /* Move slightly up */
+    }
+}
+
+/* Right button animation */
+@keyframes moveRightAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px); /* Move slightly up */
+    }
+}
